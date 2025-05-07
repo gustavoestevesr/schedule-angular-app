@@ -4,6 +4,13 @@ export const routes: Routes = [
   {
     path: '',
     redirectTo: '/schedule',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
+  {
+    path: 'schedule',
+    loadComponent: () =>
+      import('./components/calendar/calendar.component').then(
+        (c) => c.CalendarComponent
+      ),
+  },
 ];
