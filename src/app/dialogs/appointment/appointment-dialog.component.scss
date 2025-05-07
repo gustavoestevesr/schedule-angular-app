@@ -1,0 +1,29 @@
+.dialog-content {
+  padding: 30px;
+}
+
+.mat-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-dialog-header .dialog-title {
+  font-weight: normal;
+}
+
+.danger-button {
+  color: #d32f2f;
+  transition: transform 0.2s;
+}
+.danger-button:hover {
+  color: #b71c1c;
+  transform: scale(1.1);
+}
+
+.mat-dialog-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
