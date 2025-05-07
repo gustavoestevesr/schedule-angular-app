@@ -1,33 +1,26 @@
-import { AfterViewInit, Component, ElementRef, inject, Inject, ViewChild } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { CommonModule, NgIf } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import {
-  AbstractControl,
-  FormBuilder,
   FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  ValidationErrors,
-  ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { CommonModule, NgIf } from '@angular/common';
-import { timeRangeValidator } from '../../shared/validators/time-range.validator';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { IAppointment } from '../../shared/models/Appointment.model';
+import { timeRangeValidator } from '../../shared/validators/time-range.validator';
 
-export interface AppointmentDialogData {
-  uuid: string;
-  date: Date;
-  title: string;
-  startTime: string;
-  endTime: string;
-  color: string;
-}
 
 @Component({
   selector: 'app-appointment',
@@ -48,18 +41,23 @@ export interface AppointmentDialogData {
 })
 export class AppointmentDialogComponent {
   readonly dialogRef = inject(MatDialogRef<AppointmentDialogComponent>);
-  readonly data = inject<AppointmentDialogData>(MAT_DIALOG_DATA);
+  readonly data = inject<IAppointment>(MAT_DIALOG_DATA);
   readonly matDialog = inject(MatDialog);
 
-  appointmentForm = new FormGroup({
-    title: new FormControl(this?.data?.title || '', Validators.required),
-    date: new FormControl(this?.data?.date || '', Validators.required),
-    startTime: new FormControl(this?.data?.startTime ||'', Validators.required),
-    endTime: new FormControl(this?.data?.endTime ||'', Validators.required),
-  },
-  {
-    validators: timeRangeValidator('startTime', 'endTime'),
-  });
+  appointmentForm = new FormGroup(
+    {
+      title: new FormControl(this?.data?.title || '', Validators.required),
+      date: new FormControl(this?.data?.date || '', Validators.required),
+      startTime: new FormControl(
+        this?.data?.startTime || '',
+        Validators.required
+      ),
+      endTime: new FormControl(this?.data?.endTime || '', Validators.required),
+    },
+    {
+      validators: timeRangeValidator('startTime', 'endTime'),
+    }
+  );
 
   onSubmit() {
     if (this.appointmentForm.invalid) return;
