@@ -1,0 +1,8 @@
+@for (color of colorsArr; track color) {
+<mat-card
+  [ngStyle]="{ 'background-color': color }"
+  class="color-box"
+  (click)="dialogRef.close(color)"
+>
+</mat-card>
+}
