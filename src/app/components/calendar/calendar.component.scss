@@ -42,7 +42,7 @@
     th {
       font-size: 22px;
       font-weight: 100;
-      text-align: right;
+      text-align: center;
       border-bottom: 1px solid #ddd;
     }
   }
@@ -79,9 +79,15 @@
   margin-top: 1rem;
   thead {
     th {
+      .today {
+        border-radius: 1rem;
+        background-color: #0095ff;
+        color: #fff;
+        padding: 2px 1rem;
+      }
       font-size: 22px;
       font-weight: 100;
-      text-align: right;
+      text-align: center;
       border-bottom: 1px solid #ddd;
     }
   }

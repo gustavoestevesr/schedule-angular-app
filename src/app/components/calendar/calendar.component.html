@@ -91,7 +91,7 @@
             cdkDropList
             (cdkDropListDropped)="drop($event, date)"
             [cdkDropListData]="appointments"
-            [class.today]="isToday(date)"
+            [class.today]="DateHelper.isToday(date)"
             [ngStyle]="{ opacity: isCurrentMonth(date) ? '1' : '0.5' }"
           >
             <div
@@ -140,7 +140,7 @@
         <tr>
           <th></th>
           <th *ngFor="let day of weekDays; index as i">
-            {{ day }} {{ monthDays[i].getDate() }}
+            <span [class.today]="DateHelper.isToday(monthDays[i])">{{ day }} {{ monthDays[i].getDate() }}</span>
           </th>
         </tr>
       </thead>
