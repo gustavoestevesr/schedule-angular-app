@@ -1,0 +1,16 @@
+<mat-card class="message-dialog-card">
+  <mat-card-title class="message-dialog-title">
+    {{ title }}
+  </mat-card-title>
+  <mat-card-content class="message-dialog-content">
+    {{ message }}
+  </mat-card-content>
+  <mat-card-actions class="message-dialog-actions">
+    <button mat-flat-button color="primary" (click)="onConfirm()" (keydown.enter)="onConfirm()">
+      Confirm
+    </button>
+    <button mat-stroked-button color="warn" (click)="onCancel()">
+      Cancel
+    </button>
+  </mat-card-actions>
+</mat-card>

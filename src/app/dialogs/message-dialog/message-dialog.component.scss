@@ -1,0 +1,22 @@
+.message-dialog-card {
+  width: 400px;
+  height: 200px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.message-dialog-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.message-dialog-content {
+  margin: 20px 0;
+  font-size: 16px;
+}
+
+.message-dialog-actions {
+  display: flex;
+  justify-content: space-evenly;
+}
