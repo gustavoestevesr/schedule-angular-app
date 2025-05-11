@@ -1,5 +1,5 @@
 .dialog-content {
-  padding: 30px;
+  padding: 0px 30px 20px;
 }
 
 .mat-dialog-header {
@@ -12,18 +12,9 @@
   font-weight: normal;
 }
 
-.danger-button {
-  color: #d32f2f;
-  transition: transform 0.2s;
-}
-.danger-button:hover {
-  color: #b71c1c;
-  transform: scale(1.1);
-}
-
 .mat-dialog-actions {
-  margin-top: 16px;
+  margin-top: 42px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 8px;
 }

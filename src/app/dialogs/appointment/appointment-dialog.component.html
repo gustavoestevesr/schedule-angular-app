@@ -16,7 +16,7 @@
     </button>
   </div>
 
-  <div [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+  <div [formGroup]="appointmentForm" c>
     <div mat-dialog-content>
       <mat-form-field class="form-field">
         <mat-label>Title</mat-label>
@@ -50,6 +50,18 @@
           End time must be after start time.
         </div>
       </div>
+
+      <button
+        mat-flat-button
+        aria-label="Color picker button"
+        matTooltip="Color picker"
+        matTooltipPosition="above"
+        [ngStyle]="{ 'background-color': colorControl }"
+        (click)="openColorPickerDialog()"
+      >
+        Pick a color
+        <mat-icon>palette</mat-icon>
+      </button>
     </div>
 
     <div class="mat-dialog-actions" mat-dialog-actions>
@@ -57,26 +69,26 @@
         type="submit"
         mat-flat-button
         aria-label="Confirm button"
-        matTooltip="Confirm action"
+        [matTooltip]="submitButtonLabel"
         matTooltipPosition="above"
         color="primary"
         [disabled]="appointmentForm.invalid"
+        (click)="onSubmit()"
       >
         <mat-icon>{{ submitButtonIcon }}</mat-icon>
         {{ submitButtonLabel }}
       </button>
 
       <button
-        type="button"
+        *ngIf="data.uuid"
         mat-stroked-button
-        aria-label="Cancel action button"
-        matTooltip="Cancel action"
+        aria-label="Delete appointment button"
+        matTooltip="Delete Appointment"
         matTooltipPosition="above"
-        (click)="dialogRef.close()"
-        class="btn-spacing"
+        (click)="onDelete()"
       >
-        <mat-icon>cancel</mat-icon>
-        Cancel
+        <mat-icon>delete</mat-icon>
+        Delete Appointment
       </button>
     </div>
   </div>
